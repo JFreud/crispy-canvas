@@ -31,6 +31,8 @@ function execute() {
 function squar(x, y, xMag, yMag) {
   ctx.fillStyle = "green";
   ctx.fillRect(x - xMag / 2, y - yMag / 2, xMag, yMag);
+  ctx.lineTo(x,y);
+  ctx.stroke();
 }
 
 function circ(x, y, r) {
