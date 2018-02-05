@@ -2,7 +2,8 @@ var canvas = document.getElementById("slate");
 var toggler = document.getElementById("toggler");
 var clear = document.getElementById("clearer");
 var ctx = canvas.getContext("2d");
-var toggle = 1;
+var toggle = 0;
+ctx.beginPath();
 
 function toggle_button() {
   if (toggle) {
@@ -15,13 +16,14 @@ function toggle_button() {
 
 
 function execute() {
-  var canv = canvas.getBoundingClientRect();
+    var canv = canvas.getBoundingClientRect();
+    ctx.moveTo(mouseX, mouseY);
   var mouseX = event.clientX - canv.left;
   var mouseY = event.clientY - canv.top;
   if (toggle) {
     squar(mouseX, mouseY, 30, 30);
   }
-  else {
+    else {
     circ(mouseX, mouseY, 15);
   }
 }
@@ -33,14 +35,17 @@ function squar(x, y, xMag, yMag) {
 
 function circ(x, y, r) {
   ctx.fillStyle = "blue";
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, 2 * Math.PI);
-  ctx.fill();
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.fill()
+    ctx.lineTo(x,y);
+    ctx.stroke();
 }
 
 
 function clearall() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.closePath();
+    ctx.beginPath();
 }
 
 
