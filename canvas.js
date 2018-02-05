@@ -16,14 +16,14 @@ function toggle_button() {
 
 
 function execute() {
-    var canv = canvas.getBoundingClientRect();
-    ctx.moveTo(mouseX, mouseY);
+  var canv = canvas.getBoundingClientRect();
+  ctx.moveTo(mouseX, mouseY);
   var mouseX = event.clientX - canv.left;
   var mouseY = event.clientY - canv.top;
   if (toggle) {
     squar(mouseX, mouseY, 30, 30);
   }
-    else {
+  else {
     circ(mouseX, mouseY, 15);
   }
 }
@@ -35,17 +35,18 @@ function squar(x, y, xMag, yMag) {
 
 function circ(x, y, r) {
   ctx.fillStyle = "blue";
-    ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.fill()
-    ctx.lineTo(x,y);
-    ctx.stroke();
+  ctx.arc(x, y, r, 0, 2 * Math.PI);
+  // ctx.fill();
+  ctx.lineTo(x,y);
+  ctx.stroke();
 }
 
 
 function clearall() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.closePath();
-    ctx.beginPath();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.closePath();
+  ctx.beginPath();
+  toggle = 0;
 }
 
 
